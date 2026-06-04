@@ -1,0 +1,16 @@
+{
+  "name": "AutoPay Workflow Project",
+  "description": "An internal project to automate the accounts payable workflow using AI-based invoice processing and approval routing. The system will handle $12M in monthly payments, integrate with our ERP (SAP), and use an LLM to classify and auto-approve invoices under $5,000. The project is delivered by a 2-person internal team with a hard 90-day deadline. No formal change management, risk assessment, or UAT process has been defined. The system will have direct write access to payment initiation tables.",
+  "context_type": "workflow",
+  "industry": "fintech",
+  "additional_context": {
+    "team_size": 2,
+    "stage": "internal",
+    "handles_pii": true,
+    "handles_payments": true,
+    "monthly_payment_volume_usd": 12000000,
+    "primary_market": "US",
+    "erp_integration": "SAP",
+    "automated_approval_threshold_usd": 5000
+  }
+}

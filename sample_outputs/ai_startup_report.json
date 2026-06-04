@@ -1,0 +1,194 @@
+{
+  "session_id": "ra-a7f3c91b2d",
+  "entity_name": "Luminary AI",
+  "context_type": "startup",
+  "industry": "ai",
+  "created_at": "2024-09-15T14:23:11Z",
+  "overall_score": 72.4,
+  "overall_level": "HIGH",
+  "risk_summary": "Luminary AI presents a HIGH overall risk profile (score: 72/100) across 4 assessed dimensions.",
+  "executive_summary": "Luminary AI operates in a risk-elevated environment characteristic of early-stage AI startups handling sensitive legal data. With a team of five, pre-revenue status, and active production deployment of LLM-based document processing, the company carries compounding exposure across compliance, cybersecurity, and execution dimensions.\n\nThe most critical risk is compliance: processing legal contracts containing attorney-client privileged information and PII across US and EU jurisdictions triggers GDPR, CCPA, and potentially HIPAA obligations that have not been formally addressed. The absence of a data processing agreement and a formal security review amplifies this exposure significantly. A regulatory inquiry or customer data incident at this stage would be company-threatening.\n\nCybersecurity risks are closely linked — the company processes sensitive contract data without a documented security architecture, incident response plan, or external penetration test. The small team creates key-person dependencies across both engineering and operations, increasing execution risk should any team member depart.\n\nImmediate priorities are a compliance scoping exercise, engagement of external security assessment, and establishment of formal data handling policies before the next customer onboarding. The company should treat compliance and security as product requirements, not post-launch activities.",
+  "category_reports": [
+    {
+      "category": "compliance",
+      "score": 84.0,
+      "level": "CRITICAL",
+      "summary": "Processing legal contracts with PII across US and EU markets without formal compliance coverage creates critical regulatory exposure. GDPR and CCPA applicability is unaddressed, and no DPA has been executed with customers.",
+      "findings": [
+        {
+          "id": "f1a2b3c4",
+          "category": "compliance",
+          "title": "GDPR applicability unaddressed for EU customer data",
+          "description": "Processing contracts from EU-based entities without a lawful basis, DPA, or data residency controls violates GDPR Article 28 obligations.",
+          "severity": "CRITICAL",
+          "likelihood": 4,
+          "impact": 5,
+          "score": 84.0,
+          "evidence": ["Product targets EU legal departments", "No DPA executed with customers", "Data residency unknown"],
+          "mitigations": [
+            "Engage EU data protection counsel to assess GDPR Article 28 and 46 obligations",
+            "Draft and execute Data Processing Agreements with all customers",
+            "Determine and document lawful basis for all PII processing activities",
+            "Implement data residency controls or document transfer mechanisms (SCCs)"
+          ]
+        },
+        {
+          "id": "f1a2b3c5",
+          "category": "compliance",
+          "title": "CCPA compliance gap for California-based users",
+          "description": "No privacy policy, opt-out mechanism, or data subject rights process exists for California residents whose data may be processed.",
+          "severity": "HIGH",
+          "likelihood": 4,
+          "impact": 4,
+          "score": 67.2,
+          "evidence": ["Primary market is US", "No privacy policy documented", "No data subject rights process"],
+          "mitigations": [
+            "Publish a CCPA-compliant privacy policy before next customer go-live",
+            "Implement a data subject rights request workflow",
+            "Map all personal data processed to establish CCPA inventory"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "cyber",
+      "score": 78.0,
+      "level": "HIGH",
+      "summary": "Processing sensitive legal documents in production without a security review, formal access controls, or incident response plan creates material data breach risk. The attack surface is elevated by LLM API data exposure.",
+      "findings": [
+        {
+          "id": "f2a1b3c4",
+          "category": "cyber",
+          "title": "No security review prior to production deployment",
+          "description": "Sensitive legal contracts are being processed in production without any external security assessment, penetration test, or security architecture review.",
+          "severity": "CRITICAL",
+          "likelihood": 3,
+          "impact": 5,
+          "score": 78.0,
+          "evidence": ["No security review conducted per description", "Production system handling privileged legal data", "LLM API sends data to third-party provider"],
+          "mitigations": [
+            "[URGENT] Commission an external penetration test within 30 days",
+            "Conduct a threat model of the LLM data pipeline",
+            "Implement data minimization — strip PII before sending to LLM API where possible",
+            "Establish an incident response playbook before next customer onboarding"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "financial",
+      "score": 60.0,
+      "level": "HIGH",
+      "summary": "Pre-revenue status with $800K seed funding and a 5-person team creates a compressed runway. A compliance incident or delayed customer acquisition could exhaust capital before revenue is established.",
+      "findings": [
+        {
+          "id": "f3a1b2c4",
+          "category": "financial",
+          "title": "Pre-revenue with limited runway",
+          "description": "With $800K in seed funding and no revenue, estimated runway is 12–18 months depending on burn rate — insufficient buffer for a compliance remediation event.",
+          "severity": "HIGH",
+          "likelihood": 3,
+          "impact": 4,
+          "score": 60.0,
+          "evidence": ["Pre-revenue stage", "$800K seed round", "5-person team burn"],
+          "mitigations": [
+            "Establish a 6-month financial reserve or define a clear revenue trigger milestone",
+            "Implement monthly burn rate reviews with founders and investors",
+            "Prioritize 2–3 paying pilot customers within 90 days to de-risk pre-revenue status"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "operational",
+      "score": 56.0,
+      "level": "HIGH",
+      "summary": "A 5-person team running production infrastructure creates key-person risk and operational fragility. No documented processes, on-call rotation, or business continuity plan exists.",
+      "findings": [
+        {
+          "id": "f4a1b2c3",
+          "category": "operational",
+          "title": "Key-person dependency across engineering and operations",
+          "description": "With only 5 employees, critical knowledge is concentrated in 1–2 individuals. Departure or incapacitation of any core team member could halt product development or customer support.",
+          "severity": "HIGH",
+          "likelihood": 3,
+          "impact": 4,
+          "score": 56.0,
+          "evidence": ["5-person team", "Early stage startup", "No documented processes mentioned"],
+          "mitigations": [
+            "Document all critical processes and system access credentials in a secure wiki",
+            "Cross-train at least one other team member on each critical function",
+            "Establish an on-call rotation and incident response owner"
+          ]
+        }
+      ]
+    }
+  ],
+  "top_risks": [
+    {
+      "id": "f1a2b3c4",
+      "category": "compliance",
+      "title": "GDPR applicability unaddressed for EU customer data",
+      "severity": "CRITICAL",
+      "score": 84.0,
+      "likelihood": 4,
+      "impact": 5
+    },
+    {
+      "id": "f2a1b3c4",
+      "category": "cyber",
+      "title": "No security review prior to production deployment",
+      "severity": "CRITICAL",
+      "score": 78.0,
+      "likelihood": 3,
+      "impact": 5
+    }
+  ],
+  "action_plan": [
+    {
+      "priority": 1,
+      "title": "GDPR applicability unaddressed for EU customer data",
+      "description": "Engage EU data protection counsel to assess GDPR Article 28 and 46 obligations",
+      "owner": "Legal / Compliance Officer",
+      "timeframe": "Immediate (0–14 days)",
+      "category": "compliance"
+    },
+    {
+      "priority": 2,
+      "title": "Commission external security assessment",
+      "description": "Commission an external penetration test within 30 days",
+      "owner": "Head of Security / CTO",
+      "timeframe": "Immediate (0–14 days)",
+      "category": "cyber"
+    },
+    {
+      "priority": 3,
+      "title": "CCPA compliance gap",
+      "description": "Publish a CCPA-compliant privacy policy before next customer go-live",
+      "owner": "Legal / Compliance Officer",
+      "timeframe": "Short-term (15–30 days)",
+      "category": "compliance"
+    },
+    {
+      "priority": 4,
+      "title": "Establish financial runway visibility",
+      "description": "Implement monthly burn rate reviews with founders and investors",
+      "owner": "CFO / Finance Lead",
+      "timeframe": "Short-term (15–30 days)",
+      "category": "financial"
+    },
+    {
+      "priority": 5,
+      "title": "Document critical processes and reduce key-person risk",
+      "description": "Document all critical processes and system access credentials in a secure wiki",
+      "owner": "COO / Operations Lead",
+      "timeframe": "Near-term (30–90 days)",
+      "category": "operational"
+    }
+  ],
+  "metadata": {
+    "agent_count": 4,
+    "finding_count": 5,
+    "completed_at": "2024-09-15T14:23:58Z"
+  }
+}

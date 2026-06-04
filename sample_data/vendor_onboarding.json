@@ -1,0 +1,16 @@
+{
+  "name": "DataSync Pro",
+  "description": "A third-party data integration vendor being evaluated for our enterprise data pipeline. DataSync Pro is a 3-year-old company offering ETL and data synchronization services. They would have read/write access to our customer database and internal analytics warehouse. They are SOC 2 Type I certified (not Type II). Their primary data centers are in the EU. They have experienced one minor data incident in the past 18 months involving a misconfigured S3 bucket. Their data processing agreement has not been reviewed by our legal team.",
+  "context_type": "vendor",
+  "industry": "technology",
+  "additional_context": {
+    "team_size": 45,
+    "stage": "series_a",
+    "handles_pii": true,
+    "handles_payments": false,
+    "primary_market": "EU",
+    "soc2_certified": true,
+    "soc2_type": "Type I",
+    "prior_incidents": 1
+  }
+}
