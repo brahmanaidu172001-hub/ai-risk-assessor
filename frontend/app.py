@@ -3,10 +3,12 @@ AI Risk Assessor — Premium Enterprise Dark UI
 Built by Brahma Naidu | Powered by Anthropic Claude
 """
 
+import os
+
 import requests
 import streamlit as st
 
-API_BASE = "http://localhost:8000"
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 st.set_page_config(
     page_title="AI Risk Assessor",
@@ -512,7 +514,7 @@ with tab_assess:
             with st.spinner("\U0001f916  Running multi-agent analysis — Financial \u00b7 Compliance \u00b7 Operations \u00b7 Cyber \u00b7 Executive..."):
                 result, error_msg = None, None
                 try:
-                    resp = requests.post(f"{API_BASE}/assess", json=payload, timeout=240)
+                    resp = requests.post(f"{API_URL}/assess", json=payload, timeout=240)
                     resp.raise_for_status()
                     result = resp.json()
                 except requests.exceptions.ConnectionError:
@@ -551,7 +553,7 @@ with tab_history:
     if st.button("\u21bb  Refresh", type="secondary"):
         st.rerun()
     try:
-        resp     = requests.get(f"{API_BASE}/history?limit=25", timeout=5)
+        resp     = requests.get(f"{API_URL}/history?limit=25", timeout=5)
         resp.raise_for_status()
         sessions = resp.json().get("sessions") or []
         if not sessions:
@@ -575,7 +577,7 @@ with tab_history:
                     if status == "complete":
                         if st.button("Load report", key=f"ld_{s.get('session_id','')}"):
                             try:
-                                r   = requests.get(f"{API_BASE}/report/{s['session_id']}", timeout=10).json()
+                                r   = requests.get(f"{API_URL}/report/{s['session_id']}", timeout=10).json()
                                 rpt = r.get("report")
                                 if isinstance(rpt, dict): render_report(rpt)
                                 else: st.warning("Report data unavailable.")
@@ -584,4 +586,4 @@ with tab_history:
     except requests.exceptions.ConnectionError:
         st.error("Cannot connect to backend. Run: `uvicorn backend.main:app --port 8000`")
     except Exception as e:
-        st.error(f"Error: {e}")
+        st.error(f"Error loading history: {e}")
